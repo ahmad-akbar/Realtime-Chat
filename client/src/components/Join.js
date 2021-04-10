@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { Join } from '../store/action'
 
-// import './Join.css';
-
 export default function SignIn() {
   const history = useHistory()
   const dispatch = useDispatch()

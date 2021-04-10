@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
-// import '../App.css'
 import { getAllMessage, insertMessage } from '../store/action'
 
 
@@ -9,20 +8,15 @@ function Socket() {
 	const params = useParams()
 	const dispatch = useDispatch()
   const history = useHistory()
-
 	
 	const [state, setState] = useState({ message: "", name: params.name })
 
 	const { socketConnect } = useSelector((state) => state.chat)
 	const { ChatMessage } = useSelector((state) => state.chat)
-
-	console.log(ChatMessage, 'Ini chaaatnyaa, mari diliat');
-
 	
 	useEffect(() => {
 		if (socketConnect) {
 			socketConnect.on("message", ({ name, message }) => {
-				// console.log(message, '?????? INI APAAA');
 				dispatch(getAllMessage(params.chatRoomName))
 			})
 		}
