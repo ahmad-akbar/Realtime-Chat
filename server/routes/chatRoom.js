@@ -15,7 +15,6 @@ router.post('/chatrooms', async (req, res, next) => {
   try {
     const room = req.body.room
     const chatRoom = await ChatRooms.findAll({where: {name: room}})
-    // const chatRoom = await ChatRooms.findAll()
     if (!chatRoom[0]) {
       const newChatRooms = await ChatRooms.create({name: room})
       return res.status(201).json(newChatRooms)
